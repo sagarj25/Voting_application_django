@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- jQuery JS -->
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+     <!-- Bootstrap JS -->
+     
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <style>
+      body{
+        background-image: url('https://images.thequint.com/thequint/2023-05/73bf4c27-3ae1-45af-91ce-8c14e164a07f/parliamant_01__1_.jpg');
+        background-size: cover;
+      }
+      main{
+    height: 100%;
+    width: 100%;
+    background-color:transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.poll-item-title{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.poll-item-progress{
+    height: 7px;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Vote App</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="{%url 'htmlwebsite:home1' %}">Home</a>
+              <a class="nav-link" href="{%url 'htmlwebsite:result' %}">Results / Active Polls</a>
+              <a class="nav-link" href="{%url 'htmlwebsite:about' %}">About us</a>
+              <a class="nav-link" href="{%url 'htmlwebsite:sigin' %}">Sign In </a>
+              <a class="nav-link" href="{%url 'htmlwebsite:sigup' %}">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <h1>Welcome to Results Page...</h1>
+      <main>
+    <div class="col-lg-3 col-md-5 col-sm-8 col-12">
+      <div class="card rounded-0 shadow mb-3">
+          <div class="card-body">
+              <div class="container-fluid">
+                  <div class="text-secondary-emphasis border-bottom"><b>Polls</b></div>
+                  <ul class="list-group my-2">
+                      <li class="list-group-item list-group-item-action">
+                          <div class="poll-item-container" data-item="HTML">
+                              <div class="poll-item-title">Party A <span class="fs-6 text-secondary-emphasis">(<span class="poll-item-percentage">0%</span>)</span></div>
+                              <div class="progress poll-item-progress" role="progressbar" aria-label="Example with label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                              </div>
+                          </div>
+                      </li>
+                      <li class="list-group-item list-group-item-action">
+                          <div class="poll-item-container" data-item="CSS">
+                              <div class="poll-item-title">Party B <span class="fs-6 text-secondary-emphasis">(<span class="poll-item-percentage">0%</span>)</span></div>
+                              <div class="progress poll-item-progress" role="progressbar" aria-label="Example with label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
+                              </div>
+                          </div>
+                      </li>
+                      <li class="list-group-item list-group-item-action">
+                          <div class="poll-item-container" data-item="JS">
+                              <div class="poll-item-title">Party C <span class="fs-6 text-secondary-emphasis">(<span class="poll-item-percentage">0%</span>)</span></div>
+                              <div class="progress poll-item-progress" role="progressbar" aria-label="Example with label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"></div>
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+                  <div class="d-flex justify-content-end flex-wrap">
+                      <div class="text-secondary-emphasis">Number of Votes: <span class="text-dark fw-bold" id="total-votes"></span></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="card rounded-0 shadow">
+          <div class="card-body">
+              <div class="container-fluid">
+                  <div class="text-secondary-emphasis border-bottom mb-2"><b>Vote</b></div>
+                  <div class="text-muted"><small><i>(Click the button you want to vote)</i></small></div>
+                  <div class="btn-group w-100 mt-1">
+                      <button type="button" class="btn btn-primary rounded-0 btn-lg vote-btn" data-item="HTML">Party A</button>
+                      <button type="button" class="btn btn-success rounded-0 btn-lg vote-btn" data-item="CSS">Party B</button>
+                      <button type="button" class="btn btn-warning rounded-0 btn-lg vote-btn" data-item="JS">Party C</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+      </main>
+      <script>
+        // const pollItems = document.querySelectorAll('.poll-item-container')
+const voteBTN = document.querySelectorAll('.vote-btn')
+let pollData = localStorage.getItem('Polls') || '{}'
+    pollData = JSON.parse(pollData)
+function vote(item){
+    if(!!pollData[item])
+        pollData[item] = pollData[item] + 1;
+    else
+        pollData[item] = 1;
+
+    update_poll_data()
+}
+function update_poll_data(){
+    localStorage.setItem('Polls', JSON.stringify(pollData))
+    update_progress()
+}
+
+voteBTN.forEach(el=>{
+    el.addEventListener('click', function(e){
+        e.preventDefault()
+        var item = el.dataset.item || null
+        if(item != null)
+            vote(item)
+    })
+})
+
+function update_progress(){
+    var total = 0;
+    var items = [];
+    Object.entries(pollData).map(item=>{
+        items.push(item[0])
+        total += parseInt(item[1])
+    })
+    if(document.getElementById('total-votes') != null)
+        document.getElementById('total-votes').innerText = total.toLocaleString('en-US', {style: 'decimal', maximumFractionDigits:2});  
+    items.forEach(item => {
+        // Skip If the Item does not Exists
+        if(document.querySelectorAll(`.poll-item-container[data-item="${item}"]`) == null)
+            return;
+        var container = document.querySelector(`.poll-item-container[data-item="${item}"]`)
+
+        var percentage = pollData[item] || 0
+            percentage = percentage > 0 ? ((percentage / total) * 100) : 0;
+            percentage = percentage.toLocaleString('en-US', {style: 'decimal', maximumFractionDigits:2})
+
+        if(container.querySelector('.poll-item-percentage') != null)
+            container.querySelector('.poll-item-percentage').innerText = `${percentage}%`
+
+        if(container.querySelector('.poll-item-progress') != null)
+            container.querySelector('.poll-item-progress').setAttribute('aria-valuenow', percentage)
+        
+        if(container.querySelector('.poll-item-progress .progress-bar') != null)
+            container.querySelector('.poll-item-progress .progress-bar').style.width = `${percentage}%`
+    })
+}
+
+window.onload = function(){
+    update_progress()
+}
+      </script>
+</body>
+</html>
